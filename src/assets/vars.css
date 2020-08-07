@@ -1,0 +1,8 @@
+:root {
+  --color-back: #000000;
+  --color-pink: #e03b65;
+
+  --font-roboto: 'Roboto', sans-serif;
+
+  --main-font: var(--font-roboto);
+}

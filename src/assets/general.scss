@@ -1,0 +1,32 @@
+@import './reset.scss';
+@import './vars.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
+
+* {
+  font-family: var(--main-font);
+  color: var(--color-black);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 97vw;
+  height: 100vh;
+
+  box-sizing: border-box;
+}
+
+img {
+  user-select: none;
+  pointer-events: none;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 36px;
+}

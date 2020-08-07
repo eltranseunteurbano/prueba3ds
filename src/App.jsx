@@ -1,9 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
+import './assets/general.scss';
+
+import Landing from './containers/landing'
 
 const App = () => {
-  return(
-    <p>Works</p>
-  );
-};
+  return (
+    <Landing />
+  )
+}
 
-export default App;
+export default App
