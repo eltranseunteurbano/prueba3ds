@@ -24,6 +24,26 @@ img {
   pointer-events: none;
 }
 
+button {
+  display: block;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: var(--color-pink);
+  border: none;
+  border-radius: 25px;
+  width: 100px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  transition: all .4s;
+}
+
+button:hover {
+  background-color: var(--color-pink-hover);
+}
+
 .title {
   font-size: 28px;
   font-weight: 900;
