@@ -123,7 +123,7 @@ const Landing = () => {
         <h1 className='title'>{form.name}</h1>
         <h1>Tu información ha sido recibida satisfactoriamente</h1>
 
-        <button onClick={onHandleCloseModal}>Aceptar</button>
+        <button onClick={onHandleCloseModal} type='button'>Aceptar</button>
 
       </Modal>
       _
