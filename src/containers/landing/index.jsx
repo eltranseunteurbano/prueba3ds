@@ -1,23 +1,51 @@
 import React from 'react';
+import axios from 'axios';
 import './index.scss';
 
 const LOGO = 'https://sigma-studios.s3-us-west-2.amazonaws.com/test/sigma-logo.png'
 const IMAGEN = 'https://sigma-studios.s3-us-west-2.amazonaws.com/test/sigma-image.png'
+const API = 'https://sigma-studios.s3-us-west-2.amazonaws.com/test/colombia.json'
 
 const Landing = () => {
 
+  const [departmentData, setDepartmentData] = React.useState({});
+  const [departmentNames, setDepartmentNames] = React.useState([]);
+  const [cities, setCities] = React.useState([]);
   const [form, setForm] = React.useState({ department: '', city: '', name: '', email: '' })
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios('http://localhost:3000/places');
+      setDepartmentData(response.data)
+    }
+    fetchData();
+  }, [])
+
+  React.useEffect(() => {
+    setDepartmentNames(Object.entries(departmentData))
+  }, [departmentData])
+
+  React.useEffect(() => {
+    departmentNames.map((item) => {
+      if (item[0] === form.department) {
+        setCities(item[1])
+      }
+      console.log(item[0], form.department)
+
+    })
+    console.log(cities)
+  }, [form])
 
   const onChangeForm = (event) => {
     setForm({
       ...form,
       [event.target.name]: event.target.value,
     })
-  }
 
+  }
   const onSubmitForm = (event) => {
     event.preventDefault();
-    console.log(form)
+    console.log('enviar', form)
   }
 
   return (
@@ -41,15 +69,25 @@ const Landing = () => {
           <form className='landing__wp__form' onSubmit={onSubmitForm}>
             <label htmlFor='department_landing' className='require_input'>
               <p>Departamento</p>
-              <select id='department_landing' required defaultValue=''>
+              <select name='department' id='department_landing' required defaultValue='' onChange={onChangeForm}>
                 <option selected disabled hidden value=''>Selecciona un departamento</option>
+                {departmentNames.map((item) => {
+                  return (
+                    <option value={item[0]} key={item[0]}>{item[0]}</option>
+                  )
+                })}
               </select>
             </label>
 
-            <label htmlFor='city_landing' className='require_input'>
+            <label htmlFor='city_landing' className='require_input' onChange={onChangeForm}>
               <p>Ciudad</p>
-              <select id='city_landing' required defaultValue=''>
+              <select name='city' id='city_landing' required defaultValue=''>
                 <option selected disabled hidden value=''>Selecciona una ciudad</option>
+                {cities.map((item, i) => {
+                  return (
+                    <option value={item} key={item}>{item}</option>
+                  )
+                })}
               </select>
             </label>
 

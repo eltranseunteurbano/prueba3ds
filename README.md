@@ -6,4 +6,5 @@
   - **npm deploy**: Corre el comando ´´npm run build´´ y hace deploy en un proyecto en firebase
   
 
-[Link del proyecto funcionando](https://platzi.com/clases/portafolios/ "Link del proyecto funcionando")
+[Link del proyecto funcionando](https://sigma3ds.web.app/ "Link del proyecto funcionando")
+

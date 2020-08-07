@@ -3,19 +3,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ["@babel/polyfill", './src/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/',
   },
-  devtool: 'inline-source-map',
-  devServer: {
-    hot: true,
-  },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -49,6 +46,10 @@ module.exports = {
         ],
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
